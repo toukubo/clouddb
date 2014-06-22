@@ -175,12 +175,12 @@ public class List {
 
 			java.util.List<String> attrValues = new ArrayList<String>();
 			Method methods[] = clazz.getMethods();
-			for(int j=0; j<methods.length; j++) {
-				if(methods[j].getName().startsWith(("get"))){
-					String caseinsensitveAttrname = methods[j].getName().replaceFirst("get","");
 					//					Class attrclass = methods[j].getParameterTypes()[0];
-					for (int i = 0; i < attrsInCloudDB.length; i++) {
-						String attr = attrsInCloudDB[i];
+			for (int i = 0; i < attrsInCloudDB.length; i++) {
+				String attr = attrsInCloudDB[i];
+				for(int j=0; j<methods.length; j++) {
+					if(methods[j].getName().startsWith(("get"))){
+						String caseinsensitveAttrname = methods[j].getName().replaceFirst("get","");
 						if(attr.equalsIgnoreCase(caseinsensitveAttrname)){
 							String valueString = getValue(caseinsensitveAttrname,object,attrsInCloudDB,methods[j]);
 							attrValues.add(valueString);
